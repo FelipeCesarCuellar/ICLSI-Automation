@@ -8,7 +8,8 @@ import pandas as pd
 import originpro as op
 import glob
 
-from ICLSICore import CmosDialog, FolderInputDialog, getTransistorParams
+from ICLSICore.dialogs import CmosDialog, FolderInputDialog
+from ICLSICore.transistor import getTransistorParams
 
 root = tk.Tk()
 root.withdraw()
