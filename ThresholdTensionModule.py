@@ -9,7 +9,7 @@ def requirements():
 
 # Extrai Vt pelo método da segunda derivada
 
-def execute(dataframes: list[pd.DataFrame]):
+def execute(dataframes):
     print("\n ======= Módulo de extração de Vt ========")
     if not requirements(): 
         print("[ERRO] Dados insufientes para se obter Vt")
