@@ -42,7 +42,7 @@ def execute(dataframes: list[pd.DataFrame]):
         ax1.set_title('Curva Original Suavizada')
 
         ax2.plot(df['VG'], second_derivative, label='Segunda Derivada Suavizada')
-        ax2.scatter(df['VG'][max_index], second_derivative[max_index], color='red', label=f'Max: VG={df["VG"][max_index]}, 2ª Derivada={second_derivative[max_index]}')
+        ax2.scatter(df['VG'][max_index], second_derivative[max_index], color='red', label=f'Máximo em: VG={df["VG"][max_index]}')
         ax2.set_xlabel('VG')
         ax2.set_ylabel('Segunda Derivada Suavizada')
         ax2.set_title('Segunda Derivada Suavizada da Curva')
@@ -53,4 +53,4 @@ def execute(dataframes: list[pd.DataFrame]):
         plt.tight_layout()
         plt.subplots_adjust(top=0.9)
         fig.suptitle(f"Cascata: {df.attrs['Cascata']} - W: {df.attrs['W']} - L: {df.attrs['L']} - Arquivo: {df.attrs['Filename']}")
-        plt.show()
+        plt.savefig(f"report_{df.attrs['Filename']}.pdf")
