@@ -30,8 +30,8 @@ class CmosDialog(simpledialog.Dialog):
         file_label.grid(row=1, columnspan=2, pady=[0, 10])
 
         tk.Label(master, text="Cascata:", font=(font_config["font"], font_config["size"])).grid(row=2)
-        tk.Label(master, text="W:"      , font=(font_config["font"], font_config["size"])).grid(row=3)
-        tk.Label(master, text="L:"      , font=(font_config["font"], font_config["size"])).grid(row=4)
+        tk.Label(master, text="W (µm):" , font=(font_config["font"], font_config["size"])).grid(row=3)
+        tk.Label(master, text="L (µm):" , font=(font_config["font"], font_config["size"])).grid(row=4)
         tk.Label(master, text="Curva:"  , font=(font_config["font"], font_config["size"])).grid(row=5)
 
         self.cascata_entry = ttk.Entry(master, textvariable=self.cascata_var, font=(font_config["font"], font_config["size"]), style="Styled.TEntry")
