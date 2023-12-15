@@ -7,8 +7,10 @@ def requirements():
     # Função que verifica se os requisitos para se obter Vt foram cumpridos -> Ainda não implementado
     return True
 
-# Extrai Vt pelo método da segunda derivada
+def configure():
+    return
 
+# Extrai Vt pelo método da segunda derivada
 def execute(dataframes):
     print("\n ======= Módulo de extração de Vt ========")
     if not requirements(): 
