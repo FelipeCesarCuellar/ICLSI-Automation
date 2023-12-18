@@ -33,18 +33,21 @@ def execute(dataframes):
         df['Id_smoothed_derivative'] = savgol_filter(df['Id_first_derivative'], window_size_derivative, order_derivative)
         df['Id_second_derivative'] = np.gradient(df['Id_smoothed_derivative'])
         second_derivative = df['Id_second_derivative']
+        original_second_derivative = np.gradient(np.gradient(df['Id']))
 
         max_index = np.argmax(second_derivative)
         print(f"       Vt estimado: {df['VG'][max_index]} V")
 
         fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(8, 6))
 
-        ax1.plot(df['VG'], df['Id_smoothed'], label='Curva Original Suavizada')
+        ax1.plot(df['VG'], df['Id'], label='Curva Original sem filtro', color='green', zorder=1)
+        ax1.plot(df['VG'], df['Id_smoothed'], label='Curva Original Suavizada', zorder=1)
         ax1.set_ylabel('Id')
         ax1.set_title('Curva Original Suavizada')
 
-        ax2.plot(df['VG'], second_derivative, label='Segunda Derivada Suavizada')
-        ax2.scatter(df['VG'][max_index], second_derivative[max_index], color='red', label=f'Máximo em: VG={df["VG"][max_index]}')
+        ax2.plot(df['VG'], original_second_derivative, color='orange', label='Segunda Derivada sem filtro', zorder=1)
+        ax2.plot(df['VG'], second_derivative, color='blue', label='Segunda Derivada Suavizada', zorder=1)
+        ax2.scatter(df['VG'][max_index], second_derivative[max_index], color='green', label=f'Máximo em: VG={df["VG"][max_index]}', zorder=2)
         ax2.set_xlabel('VG')
         ax2.set_ylabel('Segunda Derivada Suavizada')
         ax2.set_title('Segunda Derivada Suavizada da Curva')
